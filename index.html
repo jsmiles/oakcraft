@@ -150,7 +150,7 @@
       </section>
 
 <section id="about-us" class="mt-24">
-        <div class="flex flex-col items-center">
+        <section class="flex flex-col items-center">
           <h1
             class="uppercase font-bold text-center text-green-400 font-bold text-2xl"
           >
@@ -161,6 +161,10 @@
             Dorset. We were founded in 1921 and across five generations have
             taken pride in our passion for hand crafted furniture. In our showroom we do stock many popular items ready for sale. However, we specialise in bespoke furniture. Speak to use today about a design or pattern you might be interested in commissioning. 
           </p>
+          
+
+          <!-- Map -->
+        
           <div
             style="
               max-width: 100%;
@@ -191,8 +195,68 @@
               }
             </style>
           </div>
+        </section>
+       
+
+      <!-- Accordion -->
+      <section class="flex flex-col items-center mt-24">
+        <h2 class="uppercase font-bold text-center text-green-400 font-bold text-2xl mb-8">Frequently Asked Questions</h2>
+
+        <div
+        x-data="{
+  items: [
+      {title: 'When can I visit your showroom?', body: 'Our showroom is open Monday to Saturday from 9:30 to 16:00 excluding bank holidays. If you book an appointment in advance we can ensure a member of staff is available to deal with your specific query or discuss a design.'},
+      {title: 'Do you deliver?', body: 'Yes we deliver UK wide for a reasonable fee. Delivery outside the UK is available but for a higher cost. Please contact us with details of location and  the items you would be interested in shipping to get an accurate quote.'},
+      {title: 'How long does it take to receive an order?', body: 'We keep some popular and demonstration pieces in stock at all times. However, there is currently a 3 month backlog on bespoke orders.'},
+      {title: 'What are my payment options?', body: 'We have POS terminals that accept VISA and Mastercard. Also, upon request we can facilitate bank transfer payment.'},
+      {title: 'I am unhappy with my purchase, what should I do?', body: 'We are sorry to hear that. Please contact us using the form below detailing the issue and we will handle the matter with urgency. '}
+      ],
+      activeItem: null,
+      selectItem(item) {
+        if(this.activeItem === item) {
+          this.activeItem = null
+        } else {
+          this.activeItem = item
+        }
+      }
+    }"
+  class="w-1/2"
+    >
+      <template x-for="item in items">
+        <div>
+          <div
+            @click="selectItem(item)"
+            class="py-3 px-6 bg-gray-50 border cursor-pointer hover:text-blue-400 transition-all font-semibold flex justify-between items-center"
+          >
+            <span x-text="item.title"></span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              :class="{'rotate-90': activeItem === item}"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-4 h-4 transition-all"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </div>
+          <div
+            x-show="activeItem === item"
+            x-transition
+            x-html="item.body"
+            class="p-8 bg-white border"
+          ></div>
         </div>
-      </section>
+      </template>
+    </div>
+  </section>
+
+
 
       <!-- Process -->
       <section id="process" class="mt-24 max-w-8xl">
@@ -310,32 +374,32 @@
           <div class="text-slate-300 mt-24">
             <ul>
               <li>
-                <a href="#">Home</a>
+                <a href="#" class="hover:text-green-400">Home</a>
               </li>
               <li>
-                <a href="#">Products</a>
+                <a href="#" class="hover:text-green-400">Products</a>
               </li>
               <li>
-                <a href="#">Products</a>
+                <a href="#" class="hover:text-green-400">Process</a>
               </li>
               <li>
-                <a href="#">About Us</a>
+                <a href="#" class="hover:text-green-400">About Us</a>
               </li>
             </ul>
           </div>
           <div class="text-slate-300 mt-24">
             <ul>
               <li>
-                <a href="#">Privacy</a>
+                <a href="#" class="hover:text-green-400">Privacy</a>
               </li>
               <li>
-                <a href="#">Careers</a>
+                <a href="#" class="hover:text-green-400">Careers</a>
               </li>
               <li>
-                <a href="#">Returns Policy</a>
+                <a href="#" class="hover:text-green-400">Returns Policy</a>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="#" class="hover:text-green-400">Contact</a>
               </li>
             </ul>
           </div>
@@ -351,7 +415,7 @@
       </div>
       <!-- sub footer -->
       <div class="flex justify-center mt-12 text-slate-300">
-        <h1>&copy; Copyright 2022</h1>
+        <h1>&copy; Copyright 2023</h1>
       </div>
     </footer>
 
